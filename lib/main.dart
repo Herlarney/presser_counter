@@ -19,8 +19,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChangeNotifierProvider<Presser>(
-          create: (BuildContext context) => Presser(), child: const HomePage()),
+      home: MultiProvider(providers: [
+        ChangeNotifierProvider<Presser>(
+          create: (BuildContext context) => Presser(),
+        ),
+        ChangeNotifierProvider<Date>(
+          create: (BuildContext context) => Date(),
+        ),
+      ], child: const HomePage()),
     );
   }
 }
